@@ -1,5 +1,6 @@
 import mysql.connector
 import bcrypt
+import localdb as ldb
 
 db_config = {
     "host" : "localhost",
@@ -33,3 +34,19 @@ def verifyGmail (Gmail):
     else:
         return False
 
+
+def login (Gmail, Password):
+    cursor.execute('SELECT * FROM users WHERE gmail = (%s) LIMIT 1', (Gmail,))
+    verify = cursor.fetchall()
+
+    if not verify:
+        return False
+    else:
+        RootPassword = verify[0][3].encode('utf-8') 
+        if bcrypt.checkpw(Password.encode('utf-8'), RootPassword):
+            ldb.add(verify)
+
+            return True
+        else:
+            return False 
+        
