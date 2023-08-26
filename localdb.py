@@ -18,6 +18,9 @@ conn.commit()
 
 
 def add(values):
+    cursor.execute('DELTE * FROM LocalUser')
+    conn.commit()
+    
     id = values[0][0]
     name = values[0][1]
     gmail = values[0][2]
