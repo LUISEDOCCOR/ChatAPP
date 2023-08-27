@@ -1,2 +1,2 @@
-__pycache__
-LocalUser.db
+data/*
+__pycache__/
