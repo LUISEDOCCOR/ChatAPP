@@ -4,10 +4,8 @@ def GUILOGIN():
     import database as db
     import tkinter as tk
     import localdb as ldb
-
-    # from tkinter import *
-    # Explicit imports to satisfy Flake8
     from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+    from tkinter import messagebox
 
     current_path = os.path.dirname(os.path.abspath(__file__))
     ASSETS_PATH_RELATIVE = 'assets/frame1'
@@ -197,7 +195,12 @@ def GUILOGIN():
                 else:
                     x= db.login(Gmail, Password)
                     if x:
-                        pass
+                        y = messagebox.askquestion('successfully', 'Go to ChatAPP')
+                        if y == 'yes':
+                            print('CHAT APP')
+                        else:
+                            pass    
+                        window.destroy()
                     else:
                         gmail.insert(tk.END, 'Wrong email or password')    
                         

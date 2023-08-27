@@ -2,11 +2,9 @@ def GUISIGNUP():
     import database as db
     from pathlib import Path
     import os
-
-    # from tkinter import *
-    # Explicit imports to satisfy Flake8
     from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
     import tkinter as tk
+    from tkinter import messagebox
 
     current_path = os.path.dirname(os.path.abspath(__file__))
     ASSETS_PATH_RELATIVE = 'assets/frame0'
@@ -230,6 +228,12 @@ def GUISIGNUP():
                     x = db.verifyGmail(Gmail)
                     if x:
                         db.add(Name, Gmail, Password)
+                        y = messagebox.askquestion('successfully', 'Go to ChatAPP')
+                        if y == 'yes':
+                            print('CHAT APP')
+                        else:
+                            pass    
+                        window.destroy()
                     else:
                         gmail.insert(tk.END, 'That email is in use')    
             else:

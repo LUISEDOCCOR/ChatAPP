@@ -18,7 +18,7 @@ conn.commit()
 
 
 def add(values):
-    cursor.execute('DELTE * FROM LocalUser')
+    cursor.execute('DELETE FROM LocalUser')
     conn.commit()
     
     id = values[0][0]
@@ -29,3 +29,10 @@ def add(values):
     conn.commit()
     cursor.close()
     conn.close()
+    
+    
+def name():
+    cursor.execute('SELECT * FROM LocalUser')
+    data = cursor.fetchall()
+    return data[0][1]
+    

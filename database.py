@@ -13,9 +13,9 @@ conn = mysql.connector.connect(**db_config)
 cursor = conn.cursor()
 
 if conn.is_connected:
-    print('TRUE')    
+    print('EN SERVICIO')    
 else:
-    print('FALSE')    
+    print('FUERA DE SERVICIO')    
     
 
 def add(User, Gmail, Password):

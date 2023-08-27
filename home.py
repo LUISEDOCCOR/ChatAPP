@@ -2,11 +2,9 @@ from pathlib import Path
 import os
 import login
 import signup
-
-
-# from tkinter import *
-# Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+import localdb as ldb
+
 current_path = os.path.dirname(os.path.abspath(__file__))
 ASSETS_PATH_RELATIVE = 'assets/frame2'
 full_path = os.path.join(current_path, ASSETS_PATH_RELATIVE)
@@ -69,11 +67,13 @@ image_3 = canvas.create_image(
     image=image_image_3
 )
 
+name = ldb.name()
+
 canvas.create_text(
     400.0,
     329.0,
     anchor="nw",
-    text="Luis Ed",
+    text=name,
     fill="#1E1E1E",
     font=("Poppins Medium", 15 * -1)
 )
