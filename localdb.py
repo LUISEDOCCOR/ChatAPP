@@ -30,9 +30,31 @@ def add(values):
     cursor.close()
     conn.close()
     
+def isNotLogin():
+    cursor.execute('SELECT * FROM LocalUSer')
+    verify = cursor.fetchall()
+    
+    if not verify: #si esta vacio regresa un true
+        return True
+    else:
+        return False
+ 
     
 def name():
-    cursor.execute('SELECT * FROM LocalUser')
-    data = cursor.fetchall()
-    return data[0][1]
-    
+    if isNotLogin():
+        return 'No User'
+    else:    
+        cursor.execute('SELECT * FROM LocalUser')
+        name = cursor.fetchall()
+        return name[0][1]    
+        
+def data():
+    if isNotLogin():
+        return True
+    else:    
+        cursor.execute('SELECT * FROM LocalUser')
+        data = cursor.fetchall()
+        return data[0][1], data[0][2]
+        
+
+        
